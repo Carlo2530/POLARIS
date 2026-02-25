@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aura — Dettaglio Modulo</title>
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="header header-nav">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">AURA</div>
+    </div>
+
+    <nav class="nav" aria-label="Navigazione">
+      <a class="nav-link" href="../index.html">Home</a>
+      <a class="nav-link" href="../magazzino/index.html">Magazzino</a>
+      <a class="nav-link" href="../acquisti/index.html">Acquisti</a>
+    </nav>
+
+    <div class="kpis kpis-compact" aria-label="Sintesi acquisti">
+      <div class="kpi kpi-compact" title="Suggerimenti">
+        <span class="dot warn"></span><span class="v" id="kLow">—</span>
+      </div>
+      <div class="kpi kpi-compact" title="Critici">
+        <span class="dot err"></span><span class="v" id="kErr">—</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <div class="wrap">
+    <header class="header">
+    <div class="header-inner">
+      <div class="title">
+        <h1 id="pageTitle">Modulo —</h1>
+        <p id="pageSub">Dettaglio operativo del modulo (monitoraggio + manutenzione)</p>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="l">Stato</div>
+          <div class="v" id="kStatus">—</div>
+        </div>
+        <div class="kpi">
+          <div class="l">Umidità attuale</div>
+          <div class="v" id="kHumidity">—%</div>
+        </div>
+        <div class="kpi">
+          <div class="l">Target</div>
+          <div class="v" id="kTarget">—%</div>
+        </div>
+      </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="grid">
+        <!-- LEFT: Monitoring -->
+        <div class="panel">
+          <div class="panelTop">
+            <h2>Monitoraggio umidità</h2>
+            <div class="chipline">
+              <span class="chipmini"><span class="dot is-dry"></span> Soglia</span>
+              <span class="chipmini"><span class="dot is-done"></span> OK</span>
+              <span class="chipmini"><span class="dot is-err"></span> Alert</span>
+            </div>
+          </div>
+
+          <div class="chartWrap">
+            <canvas id="humidityChart" width="900" height="340"></canvas>
+          </div>
+
+          <div class="chartFooter">
+            <div class="metric">
+              <div class="label">Trend (24h)</div>
+              <div class="value" id="mTrend">—</div>
+            </div>
+            <div class="metric">
+              <div class="label">Min/Max</div>
+              <div class="value" id="mMinMax">—</div>
+            </div>
+            <div class="metric">
+              <div class="label">Campioni</div>
+              <div class="value" id="mSamples">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Module info -->
+        <div class="panel">
+          <div class="panelTop">
+            <h2>Stato deumidificazione</h2>
+            <span class="muted" id="dehumNote">—</span>
+          </div>
+
+          <div class="dehum">
+            <div class="ring" aria-hidden="true">
+              <div class="ringInner">
+                <div class="ringPct" id="ringPct">—%</div>
+                <div class="ringSub">progresso</div>
+              </div>
+            </div>
+
+            <div class="dehumInfo">
+              <div class="row">
+                <div class="label">Tempo stimato residuo</div>
+                <div class="value" id="eta">—</div>
+              </div>
+              <div class="row">
+                <div class="label">Durata ciclo</div>
+                <div class="value" id="cycle">—</div>
+              </div>
+              <div class="row">
+                <div class="label">Modalità</div>
+                <div class="value" id="mode">—</div>
+              </div>
+
+              <div class="btnRow">
+                <button class="btn" id="pauseBtn" type="button">Pausa</button>
+                <button class="btn primary" id="resumeBtn" type="button">Riprendi</button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="panelTop">
+            <h2>Colori disponibili nel modulo</h2>
+            <span class="muted">Slot colore (8) · vista rapida</span>
+          </div>
+
+          <div class="paletteBox">
+            <div class="palette8" id="palette"></div>
+            <div class="legendMini" id="paletteLegend">—</div>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="panelTop">
+            <h2>Controlli ed errori</h2>
+            <span class="muted">Validazione bobina + log eventi</span>
+          </div>
+
+          <div class="alerts" id="alerts"></div>
+
+          <div class="logBox">
+            <div class="logTop">
+              <div class="label">Event log</div>
+              <button class="btn" id="addErrorDemo" type="button">Simula errore bobina</button>
+            </div>
+            <div class="log" id="eventLog"></div>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="panelTop">
+            <h2>Pulizia & Manutenzione</h2>
+            <span class="muted" id="cleanMeta">—</span>
+          </div>
+
+          <div class="checklist" id="checklist"></div>
+
+          <div class="btnRow">
+            <button class="btn" id="resetChecklist" type="button">Reset checklist</button>
+            <button class="btn primary" id="markCleaned" type="button">Segna pulito</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
