@@ -15,7 +15,7 @@ const kErr = document.getElementById("kErr"); // header (err)
 const manageNote = document.getElementById("manageNote");
 
 // === PATH sagoma: usa quella di Magazzino (come mi hai detto che già funziona lì) ===
-const HOME_SVG_PATH = "../magazzino/assets/sagoma-progetto.svg";
+const HOME_SVG_PATH = "magazzino/assets/sagoma-progetto.svg";
 let INLINE_SVG = "";
 
 // --- Demo data ---
