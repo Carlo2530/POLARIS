@@ -131,6 +131,7 @@ function render(mods, inlineSvgMarkup) {
         const p = Math.max(0, Math.min(100, Math.floor(m.fill ?? 85)));
 
     tile.innerHTML = `
+    <a href="../modulo/index.html?id=${encodeURIComponent(m.id)}" class="tile-link">
       <div class="tile-head">
         <div class="material-name">${m.material}</div>
         <div class="badge ${badgeClass(m.status)}">
@@ -158,6 +159,7 @@ function render(mods, inlineSvgMarkup) {
           <div class="progress-val">${p}<span>%</span></div>
         </div>
       </div>
+      </a>
     `;
 
     grid.appendChild(tile);

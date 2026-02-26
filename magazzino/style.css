@@ -223,6 +223,19 @@
   margin-left: 2px;
 }
 
+/* l'anchor che wrap-a la tile NON deve cambiare colori */
+.tile > a,
+.tile a.tile-link,
+.tile a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* importantissimo: lo SVG non deve ereditare il viola del link */
+.tile a svg {
+  color: inherit; /* se usi currentColor */
+}
+
 /* calm animations */
 @keyframes breathe{
   0%,100%{ transform: translateY(0); }

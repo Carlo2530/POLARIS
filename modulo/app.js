@@ -36,6 +36,68 @@ const MODULES = {
     }
   },
 
+    "D-02": {
+    id: "D-02",
+    material: "PLA",
+    status: "dry",                 // in essicazione / da essiccare
+    humidityTarget: 20,
+    // start alto -> scende ma ancora alto (inizio essicazione)
+    humiditySeries: genSeries(24, 55, 38),
+    dehum: {
+      mode: "Auto · PLA",
+      cycleMin: 240,
+      progress: 0.12,
+      etaMin: 210,
+      note: "Avvio ciclo: umidità elevata. Deumidificazione in corso."
+    },
+    colors: ["#111", "#e53935", "#43a047", "#1e88e5", "#fdd835", "#8e24aa", "#fb8c00", "#00acc1"],
+    spool: {
+      expected: "PLA 1.75mm",
+      inserted: "PLA 1.75mm",
+      ok: true
+    },
+    cleaning: {
+      lastCleanedISO: "2026-02-10T09:10:00Z",
+      tasks: [
+        { id: "t1", title: "Rimuovere polvere interna", desc: "Pulizia camera e griglie (panno + aria compressa)." },
+        { id: "t2", title: "Controllo guarnizioni", desc: "Verifica integrità e presenza di tagli / schiacciamenti." },
+        { id: "t3", title: "Ispezione ventole", desc: "Rotazione libera, rumori, presenza di residui." },
+        { id: "t4", title: "Pulizia sensore umidità", desc: "Superficie sensore pulita e senza condensa." }
+      ]
+    }
+  },
+
+  "D-03": {
+    id: "D-03",
+    material: "PC",
+    status: "err",                 // errore, ma umidità OK
+    humidityTarget: 18,
+    // umidità buona (sotto/sul target)
+    humiditySeries: genSeries(24, 22, 17),
+    dehum: {
+      mode: "Auto · PC",
+      cycleMin: 360,
+      progress: 0.86,
+      etaMin: 40,
+      note: "Umidità in range, ma è richiesto un controllo materiale."
+    },
+    colors: ["#111", "#263238", "#455a64", "#607d8b", "#9e9e9e", "#bdbdbd", "#424242", "#212121"],
+    spool: {
+      expected: "PC 1.75mm",
+      inserted: "PLA 1.75mm",
+      ok: false
+    },
+    cleaning: {
+      lastCleanedISO: "2026-02-06T10:20:00Z",
+      tasks: [
+        { id: "t1", title: "Rimuovere residui materiale", desc: "Controlla eventuali scaglie/filamenti dentro al vano." },
+        { id: "t2", title: "Pulizia ventole", desc: "Rimuovi polvere e verifica vibrazioni." },
+        { id: "t3", title: "Filtro / griglia ingresso", desc: "Pulizia e riposizionamento corretto." },
+        { id: "t4", title: "Pulizia sensore umidità", desc: "Verifica condensa e pulizia superficiale." }
+      ]
+    }
+  },
+
   "D-04": {
     id: "D-04",
     material: "PA",
@@ -107,6 +169,13 @@ document.getElementById("markCleaned").addEventListener("click", () => markClean
 const canvas = document.getElementById("humidityChart");
 const ctx = canvas.getContext("2d");
 
+function statusLabel(s){
+  if (s === "done") return "OK";
+  if (s === "dry") return "Da essiccare";
+  if (s === "err") return "Errore";
+  return "—";
+}
+
 // Init
 renderAll();
 
@@ -165,10 +234,10 @@ function renderAlerts(){
     ));
   } else {
     items.push(alertCard(
-      "Errore bobina",
-      `Atteso: ${data.spool.expected} · Inserito: ${data.spool.inserted}`,
-      "err"
-    ));
+  "Errore bobina",
+  `Nel modulo è inserita una bobina di ${data.spool.inserted.split(" ")[0]} nel modulo per ${data.material}`,
+  "err"
+));
   }
 
   // Cleaning due (semplice: > 7 giorni)
@@ -269,11 +338,9 @@ function drawHumidityChart(series, target){
   const w = canvas.width;
   const h = canvas.height;
 
-  // clear
   ctx.clearRect(0,0,w,h);
 
-  // padding
-  const pad = { l: 44, r: 16, t: 18, b: 34 };
+  const pad = { l: 48, r: 18, t: 24, b: 38 };
   const gw = w - pad.l - pad.r;
   const gh = h - pad.t - pad.b;
 
@@ -283,8 +350,8 @@ function drawHumidityChart(series, target){
   const x = (i) => pad.l + (i/(series.length-1)) * gw;
   const y = (v) => pad.t + (1 - (v-min)/(max-min)) * gh;
 
-  // grid lines
-  ctx.strokeStyle = "rgba(15,23,42,0.08)";
+  /* GRID */
+  ctx.strokeStyle = "rgba(15,23,42,0.06)";
   ctx.lineWidth = 1;
   for (let i=0; i<=4; i++){
     const yy = pad.t + (i/4)*gh;
@@ -294,8 +361,8 @@ function drawHumidityChart(series, target){
     ctx.stroke();
   }
 
-  // target line
-  ctx.strokeStyle = "rgba(244,162,97,0.7)";
+  /* TARGET LINE (elegante, arancio soft) */
+  ctx.strokeStyle = "rgba(244,162,97,0.65)";
   ctx.setLineDash([6,6]);
   ctx.beginPath();
   ctx.moveTo(pad.l, y(target));
@@ -303,43 +370,64 @@ function drawHumidityChart(series, target){
   ctx.stroke();
   ctx.setLineDash([]);
 
-  // line
-  ctx.strokeStyle = "rgba(58,134,255,0.95)";
-  ctx.lineWidth = 2;
+  /* LINE COLOR DINAMICO */
+  const lastVal = series[series.length-1];
+  const color =
+    lastVal <= target
+      ? "rgba(42,157,143,0.95)"     // verde
+      : lastVal <= target + 5
+      ? "rgba(244,162,97,0.95)"     // arancio
+      : "rgba(230,57,70,0.95)";     // rosso
+
+  /* AREA GRADIENT */
+  const gradient = ctx.createLinearGradient(0, pad.t, 0, pad.t+gh);
+  gradient.addColorStop(0, color.replace("0.95","0.22"));
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+
   ctx.beginPath();
   series.forEach((v,i)=>{
     const xx = x(i), yy = y(v);
     if (i===0) ctx.moveTo(xx,yy);
     else ctx.lineTo(xx,yy);
   });
-  ctx.stroke();
+  ctx.lineTo(x(series.length-1), pad.t+gh);
+  ctx.lineTo(x(0), pad.t+gh);
+  ctx.closePath();
+  ctx.fillStyle = gradient;
+  ctx.fill();
 
-  // points
-  ctx.fillStyle = "rgba(58,134,255,0.95)";
+  /* LINEA PRINCIPALE */
+  ctx.beginPath();
   series.forEach((v,i)=>{
     const xx = x(i), yy = y(v);
-    ctx.beginPath();
-    ctx.arc(xx, yy, 3, 0, Math.PI*2);
-    ctx.fill();
+    if (i===0) ctx.moveTo(xx,yy);
+    else ctx.lineTo(xx,yy);
   });
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
 
-  // axes labels
-  ctx.fillStyle = "rgba(15,23,42,0.65)";
+  /* PUNTO FINALE EVIDENZIATO */
+  const lx = x(series.length-1);
+  const ly = y(lastVal);
+
+  ctx.beginPath();
+  ctx.arc(lx, ly, 6, 0, Math.PI*2);
+  ctx.fillStyle = color.replace("0.95","0.18");
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(lx, ly, 3.5, 0, Math.PI*2);
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  /* LABEL */
+  ctx.fillStyle = "rgba(15,23,42,0.6)";
   ctx.font = "12px ui-sans-serif, system-ui";
-  ctx.fillText("Umidità %", 10, 16);
+  ctx.fillText("Umidità %", 12, 18);
 
-  // y ticks
-  ctx.fillStyle = "rgba(15,23,42,0.55)";
-  for (let i=0; i<=4; i++){
-    const vv = max - (i/4)*(max-min);
-    const yy = pad.t + (i/4)*gh;
-    ctx.fillText(vv.toFixed(0), 10, yy+4);
-  }
-
-  // x labels
-  ctx.fillStyle = "rgba(15,23,42,0.55)";
   ctx.fillText("24h fa", pad.l, h-12);
-  ctx.fillText("ora", pad.l+gw-20, h-12);
+  ctx.fillText("ora", pad.l+gw-22, h-12);
 }
 
 // Helpers
