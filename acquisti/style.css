@@ -1,4 +1,4 @@
-/* AURA — Acquisti (solo pagina)
+/* POLARIS — Acquisti (solo pagina)
    Dipende da theme.css per: wrap/header/nav/panel/card/btn/kpis/dot/muted/mono
 */
 
@@ -116,9 +116,9 @@ h2{
   width:160px;
   height:auto;
   filter: drop-shadow(0 28px 38px rgba(0,0,0,0.22));
-  animation: auraFloat 9s ease-in-out infinite;
+  animation: POLARISFloat 9s ease-in-out infinite;
 }
-@keyframes auraFloat{
+@keyframes POLARISFloat{
   0%,100%{ transform: translateY(0); }
   50%{ transform: translateY(-6px); }
 }

@@ -1,4 +1,4 @@
-// AURA — HOME (system overview) — usa sagoma reale inline (come Magazzino)
+// POLARIS — HOME (system overview) — usa sagoma reale inline (come Magazzino)
 
 const readyGrid = document.getElementById("readyGrid");
 const manageGrid = document.getElementById("manageGrid");
@@ -14,7 +14,7 @@ const kLow = document.getElementById("kLow"); // header (warn)
 const kErr = document.getElementById("kErr"); // header (err)
 const manageNote = document.getElementById("manageNote");
 
-// === PATH sagoma: usa quella di Magazzino (come mi hai detto che già funziona lì) ===
+// === PATH sagoma: usa quella di Magazzino ===
 const HOME_SVG_PATH = "magazzino/assets/sagoma-progetto.svg";
 let INLINE_SVG = "";
 
@@ -44,13 +44,13 @@ const nextDays = [
   { when:"Tra 3 giorni", mat:"PLA da 11-essiccare", hours:"", p:25 },
 ];
 
-// ---------------- SVG inline (Rhino-safe) ----------------
+// ---------------- SVG inline  ----------------
 async function loadInlineSVG(url){
   const res = await fetch(url);
   if(!res.ok) throw new Error(`Impossibile caricare SVG: ${url} (${res.status})`);
   let svgText = await res.text();
 
-  // 1) rimuovi width/height esportati (pt) così CSS controlla la scala
+  // 1) rimuovi width/height esportati (pt) 
   svgText = svgText
     .replace(/\swidth="[^"]*"/i, "")
     .replace(/\sheight="[^"]*"/i, "");
@@ -64,12 +64,12 @@ async function loadInlineSVG(url){
     .replace(/stroke="[^"]*"/g, 'stroke="none"')
     .replace(/stroke-width="[^"]*"/g, "");
 
-  // 3) aggiungi class sull'svg se manca, così prende le regole .aura-icon
+  // 
   svgText = svgText.replace(
     /<svg\b([^>]*)>/i,
     (m, attrs) => {
       if (/class="/i.test(attrs)) return `<svg${attrs}>`;
-      return `<svg class="aura-icon"${attrs}>`;
+      return `<svg class="POLARIS-icon"${attrs}>`;
     }
   );
 
@@ -116,7 +116,7 @@ function renderReady(){
           <div class="badge-soft done">${statusLabel(m.status)}</div>
         </div>
 
-        <div class="aura-mark" aria-hidden="true">
+        <div class="POLARIS-mark" aria-hidden="true">
         ${INLINE_SVG}
         </div>
 
@@ -207,7 +207,7 @@ function renderNext(){
   }catch(e){
     console.error(e);
     // fallback: se manca il file, non blocchiamo la pagina
-    INLINE_SVG = `<svg class="aura-icon" viewBox="0 0 100 100" aria-hidden="true">
+    INLINE_SVG = `<svg class="POLARIS-icon" viewBox="0 0 100 100" aria-hidden="true">
       <circle cx="50" cy="50" r="26" fill="currentColor" opacity="0.9"></circle>
     </svg>`;
   }

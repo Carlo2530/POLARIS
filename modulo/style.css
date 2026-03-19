@@ -74,34 +74,77 @@ canvas{ display:block; width:100%; height:auto; }
   .dehum{ grid-template-columns: 1fr; }
 }
 
+/* ===== POLARIS RING (soft, editoriale) ===== */
 .ring{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background: conic-gradient(var(--info) 0deg, rgba(15,23,42,0.06) 0deg);
-  display:grid;
-  place-items:center;
+  --size: 168px;
+  --th: 18px;                         /* spessore anello */
+  --track: rgba(15,23,42,0.07);        /* grigio track */
+  --prog: var(--info); 
+  --p: 0;                              /* 0..1 da JS */
+  --deg: 0deg;
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 35% 30%,
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0) 55%);
 }
+
+/* track + progress “morbidi” */
+.ring::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 50%;
+
+  /* conic progress + track */
+  background:
+    conic-gradient(var(--prog) var(--deg), rgba(15,23,42,0.07) 0);
+
+  /* crea il “foro” (donut) */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--th)), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - var(--th)), #000 0);
+
+  /* feeling glass */
+  filter: drop-shadow(0 10px 26px rgba(15,23,42,0.10));
+}
+
+
+/* interno */
 .ringInner{
-  width:118px;
-  height:118px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background: rgba(255,255,255,0.9);
+  width: calc(var(--size) - (var(--th) * 2) - 6px);
+  height: calc(var(--size) - (var(--th) * 2) - 6px);
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.75),
+    0 10px 22px rgba(15,23,42,0.06);
+
   display:grid;
   place-items:center;
   text-align:center;
 }
+
 .ringPct{
-  font-size:26px;
-  font-weight:1000;
-  letter-spacing:-0.4px;
+  font-size: 38px;     /* ↑ più grande */
+  font-weight: 1000;
+  letter-spacing: -0.8px;
+  line-height: 1;
 }
+
+.ringPct span{ font-size: 0.55em; } /* se vuoi anche il % più piccolo */
+
 .ringSub{
-  font-size:12px;
-  color:var(--muted);
-  margin-top:-6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
 }
 
 .dehumInfo .row{

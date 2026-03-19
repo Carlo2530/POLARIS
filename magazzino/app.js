@@ -1,4 +1,4 @@
-// AURA — Overview tecnica moduli 3×4
+// POLARIS — Overview tecnica moduli 3×4
 // - Ogni tile: indicatore 8 parti + nome materiale + sagoma centrale
 // - Sagoma: caricata da file SVG e inserita INLINE per colorazione via CSS
 // File sagoma: assets/sagoma progetto.svg

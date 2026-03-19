@@ -1,4 +1,4 @@
-// AURA — Acquisti (Ibrida)
+// POLARIS — Acquisti (Ibrida)
 // - suggerimenti (decisione)
 // - scorte (controllo)
 // - lista acquisti (operatività)
@@ -53,7 +53,7 @@ let stock = [
 let basket = []; // { mat, qty, why, priority, etaDays }
 
 // ---------- Vendor links (localStorage) ----------
-const LS_KEY = "AURA_VENDOR_LINKS";
+const LS_KEY = "POLARIS_VENDOR_LINKS";
 let links = loadLinks();
 
 function loadLinks(){
@@ -323,13 +323,13 @@ function openDrawer(mat){
     score: s.score,
     reasons: s.reasons.map(x=>x.t),
     generated_at: new Date().toISOString(),
-    notes: "Simulazione tesi AURA"
+    notes: "Simulazione tesi POLARIS"
   };
 
   dJson.textContent = JSON.stringify(payload, null, 2);
 
   drawer.classList.remove("is-hidden");
-  btnExportRec.onclick = () => exportJSON(payload, `aura_reco_${s.mat}.json`);
+  btnExportRec.onclick = () => exportJSON(payload, `POLARIS_reco_${s.mat}.json`);
 }
 
 btnCloseDrawer.addEventListener("click", ()=> drawer.classList.add("is-hidden"));
@@ -433,7 +433,7 @@ btnSim.addEventListener("click", ()=>{
 
 btnExportList.addEventListener("click", ()=>{
   const payload = { list: basket, exported_at: new Date().toISOString() };
-  exportJSON(payload, "aura_purchase_list.json");
+  exportJSON(payload, "POLARIS_purchase_list.json");
 });
 
 btnPrint.addEventListener("click", ()=> window.print());

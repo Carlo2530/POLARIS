@@ -1,4 +1,4 @@
-// AURA — Dettaglio Modulo (simulazione)
+// POLARIS — Dettaglio Modulo (simulazione)
 // Supporta querystring: ?id=D-01
 
 const qs = new URLSearchParams(location.search);
@@ -203,7 +203,17 @@ function renderAll(){
   eta.textContent = fmtMin(data.dehum.etaMin);
   cycle.textContent = fmtMin(data.dehum.cycleMin);
   mode.textContent = data.dehum.mode;
-  ring.style.background = `conic-gradient(var(--info) ${Math.round(data.dehum.progress*360)}deg, rgba(15,23,42,0.06) 0deg)`;
+  ring.style.setProperty("--p", data.dehum.progress);                 // 0..1
+  ring.style.setProperty("--deg", `${Math.round(data.dehum.progress*360)}deg`);
+
+  const progColor =
+  data.status === "done" ? "var(--lo)" :
+  data.status === "dry"  ? "var(--md)" :
+  "var(--hi)";
+  
+  ring.style.setProperty("--p", data.dehum.progress);
+  ring.style.setProperty("--deg", `${Math.round(data.dehum.progress*360)}deg`);
+  ring.style.setProperty("--prog", progColor);
 
   // Palette
   palette.innerHTML = data.colors.map(c => `<span class="sw" style="background:${c}"></span>`).join("");
@@ -453,13 +463,13 @@ function escapeHtml(s){
 // Persist checklist per module
 function loadChecklistState(moduleId){
   try{
-    return JSON.parse(localStorage.getItem(`aura_check_${moduleId}`) || "{}");
+    return JSON.parse(localStorage.getItem(`POLARIS_check_${moduleId}`) || "{}");
   }catch{
     return {};
   }
 }
 function saveChecklistState(moduleId, obj){
-  localStorage.setItem(`aura_check_${moduleId}`, JSON.stringify(obj));
+  localStorage.setItem(`POLARIS_check_${moduleId}`, JSON.stringify(obj));
 }
 
 // Generate a descending series (humid decreases) with small noise

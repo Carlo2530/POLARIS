@@ -1,4 +1,4 @@
-/* HOME — AURA system overview (page-specific) */
+/* HOME — POLARIS system overview (page-specific) */
 .home-layout{
   margin-top:14px;
   display:grid;
@@ -238,7 +238,7 @@
 .badge-soft.err::before{ background: var(--hi); }
 
 /* area centrale: non influisce sull’altezza perché è absolute */
-.aura-mark{
+.POLARIS-mark{
   position: absolute;
   left: 45%;
   top: 52%;
@@ -248,19 +248,19 @@
 }
 
 /* dimensione logo */
-.aura-mark svg{
+.POLARIS-mark svg{
   width: 170px;
   height: 170px;
   display: block;
 }
 
 /* colore per stato (già coerente col tuo sistema) */
-.ready-card.done .aura-mark svg{ color: var(--lo); }
-.ready-card.dry  .aura-mark svg{ color: var(--md); }
-.ready-card.err  .aura-mark svg{ color: var(--hi); }
+.ready-card.done .POLARIS-mark svg{ color: var(--lo); }
+.ready-card.dry  .POLARIS-mark svg{ color: var(--md); }
+.ready-card.err  .POLARIS-mark svg{ color: var(--hi); }
 
 /* glow calm */
-.ready-card .aura-mark svg{
+.ready-card .POLARIS-mark svg{
   filter: drop-shadow(0 18px 30px rgba(0,0,0,0.12));
 }
 
@@ -284,7 +284,7 @@
   pointer-events:none;
 }
 
-.aura-icon{
+.POLARIS-icon{
   width: 120px;
   height: 120px;
   color: var(--lo);
@@ -292,8 +292,8 @@
   opacity: .95;
 }
 
-.ready-card.dry .aura-icon{ color: var(--md); }
-.ready-card.err .aura-icon{ color: var(--hi); opacity: .90; }
+.ready-card.dry .POLARIS-icon{ color: var(--md); }
+.ready-card.err .POLARIS-icon{ color: var(--hi); opacity: .90; }
 
 .ready-foot{
   margin-top: auto;
@@ -505,14 +505,14 @@
   display:block;
 }
 
-.aura-icon{
+.POLARIS-icon{
   color: var(--lo);
   filter: drop-shadow(0 22px 30px rgba(0,0,0,0.12));
   opacity: .95;
 }
 
-.ready-card.dry .aura-icon{ color: var(--md); }
-.ready-card.err .aura-icon{ color: var(--hi); opacity: .92; }
+.ready-card.dry .POLARIS-icon{ color: var(--md); }
+.ready-card.err .POLARIS-icon{ color: var(--hi); opacity: .92; }
 
 /* ===== SYS LEFT BADGE (come reference) ===== */
 .sys-badge{
@@ -596,13 +596,13 @@
 .sys-kpi-ico.warn{ color: var(--md); }
 .sys-kpi-ico.err{ color: var(--hi); }
 
-@keyframes auraPulse{
+@keyframes POLARISPulse{
   0%,100%{ filter: drop-shadow(0 18px 28px rgba(0,0,0,0.10)); transform: translateY(0); }
   50%{ filter: drop-shadow(0 24px 38px rgba(0,0,0,0.14)); transform: translateY(-1px); }
 }
 
-.ready-card .aura-icon{
-  animation: auraPulse 4.2s ease-in-out infinite;
+.ready-card .POLARIS-icon{
+  animation: POLARISPulse 4.2s ease-in-out infinite;
 }
 
 /* Responsive */

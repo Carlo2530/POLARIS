@@ -1,5 +1,5 @@
 :root{
-  /* Aura Light */
+  /* POLARIS Light */
   --bg:#f6f7fb;
   --panel: rgba(255,255,255,0.78);
   --panelSolid:#ffffff;
@@ -177,7 +177,7 @@ body{
 }
 
 /* =========================
-   AURA Design System — Add-on
+   POLARIS Design System — Add-on
    ========================= */
 
 :root{
@@ -272,7 +272,7 @@ body{
     0 0 16px color-mix(in srgb, var(--hi) 35%, transparent);
 }
 
-/* ===== TOP BAR (AURA reference) ===== */
+/* ===== TOP BAR (POLARIS reference) ===== */
 .header.header-nav{
   position: sticky;
   top: 0;
