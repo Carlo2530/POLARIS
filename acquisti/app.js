@@ -161,7 +161,7 @@ function applyFilter(list){
 function renderStock(){
   stockList.innerHTML = "";
   const lowCount = stock.filter(r => r.qty < r.min).length;
-  kLow.textContent = lowCount;
+  if (kLow) kLow.textContent = lowCount;
 
   stock.forEach(r=>{
     const tr = document.createElement("div");
@@ -179,7 +179,7 @@ function renderStock(){
 function renderSuggestions(){
   const all = suggestionsAll();
   const list = applyFilter(all);
-  kSug.textContent = all.length;
+  if (kSug) kSug.textContent = all.length;
 
   // HERO: primi 2
   const hero = list.slice(0,2);

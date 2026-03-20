@@ -205,6 +205,8 @@
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
+  padding-left: 18px;
+  padding: 12px 13px 0px 18px;
 }
 
 .ready-mat{
@@ -249,8 +251,8 @@
 
 /* dimensione logo */
 .POLARIS-mark svg{
-  width: 170px;
-  height: 170px;
+  width: 200px;
+  height: 200px;
   display: block;
 }
 
@@ -266,10 +268,6 @@
 
 /* assicurati che header/footer stiano sopra al logo */
 .ready-top,
-.ready-foot{
-  position: relative;
-  z-index: 2;
-}
 
 /* opzionale: evita che il logo copra troppo i testi */
 .ready-card::after{
@@ -295,43 +293,6 @@
 .ready-card.dry .POLARIS-icon{ color: var(--md); }
 .ready-card.err .POLARIS-icon{ color: var(--hi); opacity: .90; }
 
-.ready-foot{
-  margin-top: auto;
-  position: relative;
-  z-index: 2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.ready-meta{
-  font-size:12px;
-  font-weight:900;
-  color: rgba(21,19,26,0.60);
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding-left: 5px;
-  padding-top: 30px;
-}
-
-.ring{
-  width:44px;
-  height:44px;
-  border-radius:999px;
-  background:
-    conic-gradient(var(--ring, var(--lo)) calc(var(--p, 0) * 1%), rgba(21,19,26,0.08) 0);
-  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.72);
-  display:grid;
-  place-items:center;
-}
-.ring span{
-  font-size:12px;
-  font-weight:1000;
-  color: rgba(21,19,26,0.78);
-}
-
 /* ---- Manage cards ---- */
 .manage-grid{
   display:grid;
@@ -340,74 +301,124 @@
 }
 
 .manage-card{
-  padding:14px;
-  border-radius: 24px;
+  position:relative;
+  min-height:30px;
+  padding:18px 18px 58px;
+  border-radius:24px;
 }
 
 .manage-top{
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
+  align-items:center;
+  gap:14px;
+  margin-bottom:0px;
 }
 
 .manage-title{
-  font-size:16px;
+  flex:0 0 auto;
+  font-size:18px;
   font-weight:1000;
-}
-
-.manage-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:999px;
-  border:1px solid rgba(20,16,20,0.10);
-  background: rgba(255,255,255,0.66);
-  font-weight:1000;
-  font-size:12px;
-  color: rgba(21,19,26,0.70);
-  white-space:nowrap;
-}
-
-.manage-chip::before{
-  content:"";
-  width:10px;height:10px;border-radius:999px;
-  background: rgba(21,19,26,0.18);
-}
-.manage-chip.dry::before{ background: var(--md); }
-.manage-chip.err::before{ background: var(--hi); }
-
-.manage-sub{
-  margin-top:10px;
-  font-size:12px;
-  font-weight:900;
-  color: rgba(21,19,26,0.55);
+  letter-spacing:-0.02em;
+  line-height:1;
+  color: rgba(8,22,52,0.98);
+  min-width: fit-content;
 }
 
 .manage-bar{
-  margin-top:12px;
+  flex:1 1 auto;
+  min-width:0;
   height:10px;
   border-radius:999px;
   border:1px solid rgba(20,16,20,0.10);
   background: rgba(21,19,26,0.06);
   overflow:hidden;
 }
+
 .manage-bar > div{
   height:100%;
   width:0%;
-  background: rgba(21,19,26,0.72);
+  background: var(--md);
+  border-radius:999px;
+}
+
+.manage-card.is-err .manage-bar > div{
+  background: var(--hi);
 }
 
 .manage-foot{
-  margin-top:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:14px;
+  height:30px;
+}
+
+/* ID modulo */
+.manage-card .module-id{
+  position:absolute;
+  left:0;
+  bottom:0;
+  padding-left:0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
   font-size:12px;
   font-weight:900;
-  color: rgba(21,19,26,0.60);
+  letter-spacing:0.08em;
+  color: rgba(21,19,26,0.50);
+}
+
+/* Palette centrale */
+.manage-card .palette8.palette-bottom{
+  position:absolute;
+  left:46px;
+  right:66px;
+  bottom:1px;
+  transform:none;
+  display:grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap:6px;
+  padding:5px 8px;
+  height:18px;
+  border-radius:999px;
+  background: rgba(255,255,255,0.92);
+  box-shadow:
+    0 10px 26px rgba(16,10,20,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+.manage-card .palette-slot{
+  width:100%;
+  height:8px;
+  border-radius:999px;
+  background: var(--slot, rgba(21,19,26,0.10));
+  border:1px solid rgba(0,0,0,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.24);
+}
+
+/* Percentuale a destra */
+.manage-card .progress{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:58px;
+  height:28px;
+}
+
+.manage-card .progress-val{
+  position:absolute;
+  right:0;
+  bottom:-2px;
+  font-weight:1000;
+  font-size:22px;
+  letter-spacing:-0.04em;
+  color: rgba(21,19,26,0.78);
+  white-space:nowrap;
+}
+
+.manage-card .progress-val span{
+  font-size:16px;
+  font-weight:900;
+  color: rgba(21,19,26,0.45);
+  margin-left:2px;
 }
 
 /* ---- Right panels ---- */
@@ -614,3 +625,102 @@
 @media (max-width: 720px){
   .ready-grid, .manage-grid{ grid-template-columns: 1fr; }
 }
+
+.tile-foot{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:14px;
+  height:64px;
+  z-index:4;
+}
+
+.module-id{
+  position:absolute;
+  left:2px;
+  bottom:24px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New";
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:0.08em;
+  color: rgba(21,19,26,0.50);
+}
+
+.palette-bottom{
+  position:absolute;
+  left:0;
+  right:0px;
+  bottom:0;
+  transform:none;
+  display:grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap:6px;
+
+  padding:6px 8px;
+  height:18px;
+  border-radius:999px;
+  background: rgb(255 255 255 / 38%);
+  box-shadow:
+    0 10px 26px rgba(16,10,20,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+.palette-slot{
+  width:100%;
+  height:8px;
+  border-radius:999px;
+  background: var(--slot, rgba(21,19,26,0.10));
+  border:1px solid rgba(0,0,0,0.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28);
+}
+
+.progress{
+  position:absolute;
+  right:0;
+  bottom:2px;
+  width:64px;
+  height:52px;
+}
+
+.progress-ring{
+  position:absolute;
+  right:0;
+  bottom:20px;
+  width:32px;
+  height:32px;
+  border-radius:999px;
+  background: conic-gradient(currentColor 0deg calc(var(--p,85)*3.6deg), rgba(21,19,26,0.10) 0deg 360deg);
+  opacity:0.20;
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 60%);
+          mask: radial-gradient(circle, transparent 58%, #000 60%);
+}
+
+.ready-card .progress-ring{
+  color: #49b3a6;
+}
+
+.ready-card .progress-val{
+  color: rgba(21,19,26,0.78);
+}
+
+.ready-card .progress-val span{
+  color: rgba(21,19,26,0.45);
+}
+
+.progress-val{
+  position:absolute;
+  right:0;
+  bottom:22px;
+  font-weight:1000;
+  font-size:22px;
+  letter-spacing:-0.04em;
+  color: rgba(21,19,26,0.78);
+}
+
+.progress-val span{
+  font-size:16px;
+  font-weight:900;
+  color: rgba(21,19,26,0.45);
+  margin-left:2px;
+}
+

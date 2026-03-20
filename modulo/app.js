@@ -4,6 +4,7 @@
 const qs = new URLSearchParams(location.search);
 const moduleId = qs.get("id") || "D-01";
 
+
 // Mock dati modulo
 const MODULES = {
   "D-01": {
@@ -487,3 +488,4 @@ function genSeries(n, start, end){
   }
   return out;
 }
+

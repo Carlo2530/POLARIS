@@ -20,17 +20,24 @@ let INLINE_SVG = "";
 
 // --- Demo data ---
 const modules = [
-  { id:"D-01", mat:"PLA", status:"done", grams:750, progress:85 },
-  { id:"D-02", mat:"PETG", status:"done", grams:320, progress:100 },
-  { id:"D-03", mat:"ASA", status:"done", grams:460, progress:60 },
+  { id: "D-01", material: "PLA",  status: "done", fill: 100, colors: ["#111","#e53935","#43a047","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
+  { id: "D-02", material: "PETG", status: "done", fill: 95,  colors: ["#d32f2f","#c2185b","#7b1fa2","#1976d2","#388e3c","#fbc02d","#f57c00","#455a64"] },
+  { id: "D-03", material: "ASA",  status: "done", fill: 95, colors: ["#fff","#9e9e9e","#616161","#212121","#ff7043","#26a69a","#ab47bc","#5c6bc0"] },
+  { id: "D-04", material: "PA",   status: "done", fill: 100,  colors: ["#000","#263238","#455a64","#607d8b","#9e9e9e","#bdbdbd","#424242","#212121"] },
 
-  { id:"D-05", mat:"ABS", status:"dry", note:"Mancano ~6h", progress:30, grams:150 },
-  { id:"D-07", mat:"PA-CF", status:"err", note:"Verifica stato", progress:30, grams:80 },
-  { id:"D-06", mat:"TPU", status:"dry", note:"DE07 · 880d", progress:95, grams:280 },
+  { id: "D-05", material: "ABS",  status: "done", fill: 88,  colors: ["#424242","#ef5350","#66bb6a","#42a5f5","#ffee58","#7e57c2","#ffa726","#26c6da"] },
+  { id: "D-06", material: "TPU",  status: "done", fill: 90, colors: ["#000","#90a4ae","#ff7043","#8d6e63","#26a69a","#ec407a","#ffee58","#5c6bc0"] },
+  { id: "D-07", material: "PC",   status: "dry", fill: 35,  colors: ["#eceff1","#546e7a","#ff8a65","#4db6ac","#ba68c8","#7986cb","#dce775","#ffd54f"] },
+  { id: "D-08", material: "PLA",  status: "dry", fill: 18, colors: ["#212121","#d81b60","#1e88e5","#43a047","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
+
+  { id: "D-09", material: "PETG", status: "dry", fill: 27,  colors: ["#e0e0e0","#757575","#ffca28","#66bb6a","#42a5f5","#ab47bc","#ef5350","#26c6da"] },
+  { id: "D-10", material: "ASA",  status: "dry", fill: 19, colors: ["#ffffff","#111111","#ff7043","#26a69a","#7e57c2","#42a5f5","#ffee58","#8d6e63"] },
+  { id: "D-11", material: "PA-CF",status: "err", fill: 23,  colors: ["#000","#111","#222","#333","#444","#555","#666","#777"] },
+  { id: "D-12", material: "ABS",  status: "dry", fill: 16, colors: ["#111","#f4511e","#7cb342","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
 ];
 
 const inventory = [
-  { mat:"PLA", grams:750, max:1000 },
+  { mat:"PLA", grams:500, max:1000 },
   { mat:"ABS", grams:150, max:1000 },
   { mat:"PETG", grams:320, max:1000 },
   { mat:"ASA", grams:460, max:1000 },
@@ -76,6 +83,13 @@ async function loadInlineSVG(url){
   return svgText;
 }
 
+function paletteSlots(colors = []){
+  return Array.from({ length: 8 }, (_, i) => {
+    const c = colors[i] || "rgba(21,19,26,0.10)";
+    return `<span class="palette-slot" style="--slot:${c}"></span>`;
+  }).join("");
+}
+
 function statusLabel(s){
   if(s==="done") return "Essiccato";
   if(s==="dry") return "Da essiccare";
@@ -108,11 +122,11 @@ function renderSystem(){
 function renderReady(){
   const ready = modules.filter(m => m.status==="done");
   readyGrid.innerHTML = ready.map(m=>{
-    const p = pct(m.progress);
+    const p = pct(m.fill);
     return `
       <div class="ready-card card done" data-id="${m.id}">
         <div class="ready-top">
-          <div class="ready-mat">${m.mat}</div>
+          <div class="ready-mat">${m.material}</div>
           <div class="badge-soft done">${statusLabel(m.status)}</div>
         </div>
 
@@ -121,16 +135,20 @@ function renderReady(){
         </div>
 
 
-        <div class="ready-foot">
-          <div class="ready-meta">
-            <span class="mono">${m.id}</span>
-            <span>•</span>
-            <span>${m.grams}g disponibili</span>
-          </div>
+        <div class="tile-foot">
+  <div class="mono module-id">${m.id}</div>
 
-          <div class="ring" style="--p:${p}; --ring: var(--lo);">
-            <span>${p}%</span>
-          </div>
+  <div class="palette8 palette-bottom">
+    ${paletteSlots(m.colors)}
+  </div>
+
+  <div class="progress">
+    <div class="progress-ring" style="--p:${p}"></div>
+    <div class="progress-val">${p}<span>%</span></div>
+  </div>
+</div>
+
+          
         </div>
       </div>
     `;
@@ -138,28 +156,30 @@ function renderReady(){
 }
 
 function renderManage(){
-  const list = modules.filter(m => m.status!=="done");
-  manageGrid.innerHTML = list.map(m=>{
-    const p = pct(m.progress || 0);
-    const chipCls = m.status === "err" ? "err" : "dry";
+  const list = modules.filter(m => m.status !== "done");
+
+  manageGrid.innerHTML = list.map(m => {
+    const p = pct(m.progress || m.fill || 0);
     const barColor = m.status === "err" ? "var(--hi)" : "var(--md)";
+
     return `
-      <div class="manage-card card">
+      <div class="manage-card card ${m.status === "err" ? "is-err" : "is-dry"}">
         <div class="manage-top">
-          <div>
-            <div class="manage-title">${m.mat}</div>
-            <div class="manage-sub">${m.note || ""}</div>
+          <div class="manage-title">${m.mat || m.material}</div>
+          <div class="manage-bar">
+            <div style="width:${p}%; background:${barColor};"></div>
           </div>
-          <div class="manage-chip ${chipCls}">${statusLabel(m.status)}</div>
         </div>
-
-        <div class="manage-bar">
-          <div style="width:${p}%; background:${barColor};"></div>
-        </div>
-
         <div class="manage-foot">
-          <div class="mono">${m.id} · ${m.grams || "—"}g disponibili</div>
-          <div style="font-weight:1000;">${p}%</div>
+          <div class="mono module-id">${m.id}</div>
+
+          <div class="palette8 palette-bottom">
+            ${paletteSlots(m.colors)}
+          </div>
+
+          <div class="progress">
+            <div class="progress-val">${p}<span>%</span></div>
+          </div>
         </div>
       </div>
     `;

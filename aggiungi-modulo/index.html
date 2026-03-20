@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>POLARIS — Aggiungi modulo</title>
+
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header header-nav">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo">POLARIS</div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../magazzino/index.html">Magazzino</a>
+        <a class="nav-link is-active" href="./index.html">Aggiungi modulo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main class="page add-module-page">
+
+      <section class="intro">
+  <div class="intro-grid">
+    <div class="intro-title-block">
+      <p class="eyebrow">Onboarding modulo</p>
+      <h1>Aggiungi modulo</h1>
+    </div>
+
+    <div class="intro-side">
+      <p class="intro-text">
+        Associa un nuovo modulo POLARIS al sistema tramite connessione NFC.
+        Dopo il pairing, il sistema gestirà automaticamente riconoscimento dei filamenti,
+        palette cromatica e parametri di essiccazione.
+      </p>
+    </div>
+  </div>
+</section>
+
+      <section class="builder-layout">
+
+        <!-- COLONNA SINISTRA -->
+        <section class="panel card-soft form-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Configurazione guidata</p>
+              <h2>Associazione modulo</h2>
+            </div>
+          </div>
+
+          <div class="nfc-card" id="nfcCard">
+            <div class="nfc-visual">
+              <div class="nfc-phone">
+                <div class="nfc-phone-screen"></div>
+                <div class="nfc-phone-chip">NFC</div>
+              </div>
+
+              <div class="nfc-signal" aria-hidden="true">
+                <span class="arc arc-1"></span>
+                <span class="arc arc-2"></span>
+                <span class="arc arc-3"></span>
+              </div>
+
+                <div class="nfc-module-wrap">
+                  <div class="nfc-module-shape" id="nfcModuleShape"></div>
+                </div>
+            </div>
+
+            <div class="nfc-copy">
+              <p class="nfc-label">Connessione NFC</p>
+              <h3 id="nfcTitle">Avvicina il telefono al modulo</h3>
+              <p id="nfcText">
+                Rileva e associa automaticamente l’hardware del nuovo modulo POLARIS.
+              </p>
+            </div>
+
+            <button class="btn-nfc" id="pairBtn" type="button">
+              Connetti modulo
+            </button>
+          </div>
+
+          <form id="moduleForm" class="module-form" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span class="field-label">Nome modulo</span>
+                <input
+                  id="moduleName"
+                  class="input"
+                  type="text"
+                  value="Modulo essiccazione 01"
+                  maxlength="32"
+                  placeholder="Es. Modulo essiccazione 01"
+                />
+              </label>
+
+              <label class="field">
+                <span class="field-label">Zona magazzino</span>
+                <input
+                  id="moduleZone"
+                  class="input"
+                  type="text"
+                  value="Cluster A · Scaffale 02"
+                  maxlength="32"
+                  placeholder="Es. Cluster A · Scaffale 02"
+                />
+              </label>
+            </div>
+
+            <div class="field field-full">
+              <span class="field-label">Dati configurati automaticamente</span>
+
+              <div class="auto-grid">
+                <div class="auto-item">
+                  <span class="auto-label">ID hardware</span>
+                  <span class="auto-value mono" id="autoId">In attesa</span>
+                </div>
+
+                <div class="auto-item">
+                  <span class="auto-label">Stato connessione</span>
+                  <span class="auto-value" id="autoConnection">Non associato</span>
+                </div>
+
+                <div class="auto-item">
+                  <span class="auto-label">Riconoscimento filamenti</span>
+                  <span class="auto-value" id="autoFilaments">Automatico dopo inserimento</span>
+                </div>
+
+                <div class="auto-item">
+                  <span class="auto-label">Temperatura essiccazione</span>
+                  <span class="auto-value" id="autoTemp">Calcolata dal sistema</span>
+                </div>
+
+                <div class="auto-item">
+                  <span class="auto-label">Palette colori</span>
+                  <span class="auto-value" id="autoPalette">Generata automaticamente</span>
+                </div>
+
+                <div class="auto-item">
+                  <span class="auto-label">Profilo materiale</span>
+                  <span class="auto-value" id="autoProfile">Adattivo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field field-full">
+              <span class="field-label">Nota</span>
+              <textarea
+                id="moduleNote"
+                class="textarea"
+                rows="4"
+                placeholder="Aggiungi una nota opzionale sul posizionamento o sull'uso del modulo..."
+              >Modulo destinato al nuovo cluster di magazzino.</textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="reset" class="btn ghost">Reset</button>
+              <button type="button" class="btn primary" id="saveBtn">Salva modulo</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- COLONNA DESTRA -->
+        <aside class="panel preview-panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Anteprima</p>
+              <h2>Stato modulo</h2>
+            </div>
+            <div class="preview-caption" id="previewStatusText">In attesa di associazione</div>
+          </div>
+
+          <div class="tile status-dry preview-tile" id="previewTile">
+            <div class="tile-head">
+              <div class="material-name" id="previewName">Modulo essiccazione 01</div>
+
+              <div class="badge dry" id="previewBadge">
+                <span class="dot"></span>
+                <span id="previewBadgeText">NON ASSOCIATO</span>
+              </div>
+            </div>
+
+            <div class="tile-body">
+              <div class="silhouette-wrap" id="previewSilhouette">
+                <!-- SVG inline caricato da assets/sagoma-progetto.svg -->
+              </div>
+
+              <div class="preview-center-info">
+                <div class="pair-state" id="pairState">Pronto per pairing NFC</div>
+              </div>
+            </div>
+
+            <div class="tile-foot">
+              <div class="mono module-id" id="previewId">ID non assegnato</div>
+
+              <div class="palette8 palette-bottom" id="previewPalette">
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+                <span class="sw is-empty"></span>
+              </div>
+
+              <div class="progress">
+                <div class="progress-ring" style="--p:0"></div>
+                <div class="progress-val" id="previewPercent">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-meta panel">
+            <div class="preview-meta-row">
+              <span class="preview-meta-label">Zona</span>
+              <span class="preview-meta-value" id="previewZone">Cluster A · Scaffale 02</span>
+            </div>
+
+            <div class="preview-meta-row">
+              <span class="preview-meta-label">Connessione</span>
+              <span class="preview-meta-value" id="previewConnection">In attesa</span>
+            </div>
+
+            <div class="preview-meta-row">
+              <span class="preview-meta-label">Gestione</span>
+              <span class="preview-meta-value">Filamenti, palette e temperatura gestiti automaticamente</span>
+            </div>
+
+            <div class="preview-meta-row preview-meta-note">
+              <span class="preview-meta-label">Nota</span>
+              <p class="preview-note" id="previewNote">
+                Modulo destinato al nuovo cluster di magazzino.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
