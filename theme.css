@@ -549,6 +549,7 @@ body {
 
   .header.header-nav{
     backdrop-filter: blur(14px);
+    width: 100%;
   }
 
   .header.header-nav .header-inner{
@@ -602,7 +603,7 @@ body {
   .header.header-nav .kpis.kpis-compact{
     flex: 1 1 auto;
     min-width: 0;
-    gap: 6px;
+    gap: 3px;
     padding: 4px 4px;
     justify-content: space-between;
   }
@@ -611,7 +612,7 @@ body {
     flex: 1 1 0;
     min-width: 0;
     justify-content: center;
-    padding: 6px 4px;
+    padding: 11.5px 4px;
   }
 
   .header.header-nav .kpi.kpi-compact .v{
@@ -620,11 +621,11 @@ body {
 
   .header.header-nav .header-cta{
     width: 30px;
-    height: 30px;
+    height: 30%;
     flex: 0 0 20px;
     padding: 0 0 5px 0.5px;
     font-size: 20px;
-    border-radius: 14px;
+    border-radius: 12px;
   }
 }
 
@@ -634,21 +635,22 @@ body {
   }
 
   .header.header-nav .header-inner{
-    padding: 10px 12px 12px;
+    width: 100%;
+    
   }
 
   .header.header-nav .logo{
-    font-size: 15px;
+    font-size: 0px;
   }
 
   .header.header-nav .nav-link{
     font-size: 11px;
-    padding: 2px 2px;
+    padding: 7px 9px;
   }
 
   .header.header-nav .kpis.kpis-compact{
-    gap: 4px;
-    padding: 0px;
+    gap: 2px;
+    padding: 3px;
   }
 
   .header.header-nav .kpi.kpi-compact{
