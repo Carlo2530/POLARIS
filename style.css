@@ -724,3 +724,345 @@
   margin-left:2px;
 }
 
+
+
+/* =========================
+   HOME RESPONSIVE
+   ========================= */
+@media (max-width: 1100px){
+  .home-layout{
+    grid-template-columns: 1fr;
+  }
+
+  .home-right{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 2fr));
+    gap: 14px;
+  }
+
+  .sys{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sys-kpis{
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .sys-kpi{
+    flex: 1 1 160px;
+  }
+
+  .ready-grid,
+  .manage-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px){
+  .home-layout{
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  .home-left,
+  .home-right{
+    gap: 12px;
+  }
+
+  .home-right{
+    grid-template-columns: 1fr;
+  }
+
+  .sys{
+    padding: 14px;
+    gap: 14px;
+    border-radius: 24px;
+  }
+
+  .sys-left{
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .sys-title{
+    font-size: 18px;
+  }
+
+  .sys-sub{
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .sys-kpis{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .sys-kpi{
+    min-width: 0;
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .sys-kpi-top{
+    gap: 6px;
+  }
+
+  .sys-kpi-num{
+    font-size: 16px;
+  }
+
+  .sys-kpi-label{
+    font-size: 11px;
+  }
+
+  .section-head{
+    align-items: flex-start;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .ready-grid,
+  .manage-grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ready-card{
+    min-height: 190px;
+    border-radius: 24px;
+    padding: 14px;
+    padding-bottom: 16px;
+  }
+
+  .ready-top{
+    padding: 2px 2px 0;
+    gap: 10px;
+  }
+
+  .ready-mat{
+    font-size: 17px;
+  }
+
+  .badge-soft{
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .POLARIS-mark{
+    left: 50%;
+    top: 51%;
+  }
+
+  .POLARIS-mark svg,
+  .POLARIS-icon{
+    width: 126px;
+    height: 126px;
+  }
+
+  .tile-foot{
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    height: 58px;
+  }
+
+  .module-id{
+    font-size: 11px;
+    bottom: 22px;
+  }
+
+  .palette-bottom{
+    gap: 4px;
+    padding: 5px 6px;
+    height: 16px;
+  }
+
+  .palette-slot{
+    height: 6px;
+  }
+
+  .progress{
+    width: 60px;
+    height: 44px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .progress-ring{
+    width: 28px;
+    height: 28px;
+    bottom: 14px;
+  }
+
+  .progress-val{
+    bottom: 14px;
+    font-size: 18px;
+  }
+
+  .progress-val span{
+    font-size: 13px;
+  }
+
+  .manage-card{
+    min-height: 112px;
+    padding: 14px 14px 52px;
+    border-radius: 22px;
+  }
+
+  .manage-top{
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .manage-title{
+    font-size: 17px;
+  }
+
+  .manage-bar{
+    width: 100%;
+  }
+
+  .manage-foot{
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+  }
+
+  .manage-card .palette8.palette-bottom{
+    left: 42px;
+    right: 56px;
+    gap: 4px;
+    padding: 4px 6px;
+    height: 16px;
+  }
+
+  .manage-card .palette-slot{
+    height: 6px;
+  }
+
+  .manage-card .progress{
+    width: 50px;
+    height: 24px;
+  }
+
+  .manage-card .progress-val{
+    font-size: 18px;
+  }
+
+  .panel{
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .panel-top{
+    margin-bottom: 8px;
+  }
+
+  .inv,
+  .next{
+    gap: 10px;
+  }
+
+  .next-item{
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .next-top{
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .next-meta{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px){
+  .sys-left{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sys-kpis{
+    grid-template-columns: 1fr;
+  }
+
+  .sys-kpi{
+    width: 100%;
+  }
+
+  .ready-card{
+    min-height: 176px;
+  }
+
+  .ready-mat,
+  .manage-title{
+    font-size: 16px;
+  }
+
+  .POLARIS-mark svg,
+  .POLARIS-icon{
+    width: 112px;
+    height: 112px;
+  }
+
+  .manage-card .palette8.palette-bottom{
+    left: 0;
+    right: 56px;
+    bottom: -22px;
+  }
+
+  .manage-card{
+    padding-bottom: 74px;
+  }
+
+  .manage-card .module-id{
+    bottom: 22px;
+  }
+}
+
+@media (max-width: 380px){
+  .sys{
+    padding: 12px;
+  }
+
+  .ready-card,
+  .manage-card,
+  .panel{
+    border-radius: 20px;
+  }
+
+  .badge-soft{
+    max-width: 100%;
+  }
+
+  .ready-top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tile-foot{
+    height: 54px;
+  }
+
+  .palette-bottom{
+    right: 54px;
+  }
+
+  .progress{
+    width: 52px;
+  }
+
+  .progress-val,
+  .manage-card .progress-val{
+    font-size: 16px;
+  }
+}

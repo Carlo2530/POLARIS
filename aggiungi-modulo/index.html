@@ -13,7 +13,10 @@
   <header class="header header-nav">
     <div class="header-inner">
       <div class="brand">
-        <div class="logo">POLARIS</div>
+        <a href="../index.html" class="brand-link">
+          <img src="../polaris_logo.png" alt="Logo POLARIS" class="brand-mark">
+          <span class="logo">POLARIS</span>
+        </a>
       </div>
 
       <nav class="nav">
@@ -56,35 +59,37 @@
           </div>
 
           <div class="nfc-card" id="nfcCard">
-            <div class="nfc-visual">
-              <div class="nfc-phone">
-                <div class="nfc-phone-screen"></div>
-                <div class="nfc-phone-chip">NFC</div>
-              </div>
+  <div class="nfc-main">
+    <div class="nfc-visual">
+      <div class="nfc-phone">
+        <div class="nfc-phone-screen"></div>
+        <div class="nfc-phone-chip">NFC</div>
+      </div>
 
-              <div class="nfc-signal" aria-hidden="true">
-                <span class="arc arc-1"></span>
-                <span class="arc arc-2"></span>
-                <span class="arc arc-3"></span>
-              </div>
+      <div class="nfc-signal" aria-hidden="true">
+        <span class="arc arc-1"></span>
+        <span class="arc arc-2"></span>
+        <span class="arc arc-3"></span>
+      </div>
 
-                <div class="nfc-module-wrap">
-                  <div class="nfc-module-shape" id="nfcModuleShape"></div>
-                </div>
-            </div>
+      <div class="nfc-module-wrap">
+        <div class="nfc-module-shape" id="nfcModuleShape"></div>
+      </div>
+    </div>
 
-            <div class="nfc-copy">
-              <p class="nfc-label">Connessione NFC</p>
-              <h3 id="nfcTitle">Avvicina il telefono al modulo</h3>
-              <p id="nfcText">
-                Rileva e associa automaticamente l’hardware del nuovo modulo POLARIS.
-              </p>
-            </div>
+    <div class="nfc-copy">
+      <p class="nfc-label">Connessione NFC</p>
+      <h3 id="nfcTitle">Avvicina il telefono al modulo</h3>
+      <p id="nfcText">
+        Rileva e associa automaticamente l’hardware del nuovo modulo POLARIS.
+      </p>
+    </div>
+  </div>
 
-            <button class="btn-nfc" id="pairBtn" type="button">
-              Connetti modulo
-            </button>
-          </div>
+  <button class="btn-nfc btn-nfc-bar" id="pairBtn" type="button">
+    Connetti modulo
+  </button>
+</div>
 
           <form id="moduleForm" class="module-form" novalidate>
             <div class="form-grid">
