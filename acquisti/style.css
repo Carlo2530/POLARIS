@@ -390,9 +390,607 @@ h2{
 
 #stockList .state-dot{ width:12px; height:12px; }
 
-/* Responsive */
+/* ---------- Responsive magazzino ---------- */
+
+@media (max-width: 1200px){
+  .grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: minmax(220px, 1fr);
+  }
+
+  .material-name{
+    font-size: 20px;
+  }
+
+  .silhouette-wrap{
+    width: 58%;
+    height: 58%;
+  }
+}
+
+@media (max-width: 900px){
+  .page{
+    padding: 12px 0;
+  }
+
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(220px, 240px);
+    gap: 12px;
+  }
+
+  .tile,
+  .tile::before{
+    border-radius: 26px;
+  }
+
+  .tile-head{
+    top: 14px;
+    left: 14px;
+    right: 14px;
+  }
+
+  .tile-foot{
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+  }
+
+  .material-name{
+    left: 2px;
+    font-size: 18px;
+  }
+
+  .badge{
+    right: 0;
+    gap: 8px;
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+
+  .badge .dot{
+    width: 9px;
+    height: 9px;
+  }
+
+  .silhouette-wrap,
+  .add-tile .add-silhouette-wrap{
+    transform: translate(-2%);
+    width: 60%;
+    height: 60%;
+  }
+
+  .silhouette{
+    width: 84%;
+  }
+
+  .module-id{
+    left: 4px;
+    bottom: 20px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .palette8{
+    width: 88%;
+    height: 14px;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .progress{
+    right: 4px;
+    bottom: 13px;
+    width: 74px;
+    height: 46px;
+  }
+
+  .progress-ring{
+    width: 31px;
+    height: 31px;
+  }
+
+  .progress-val{
+    font-size: 20px;
+  }
+
+  .progress-val span{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px){
+  .page{
+    padding: 10px 0;
+  }
+
+  .grid{
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(220px, auto);
+    gap: 12px;
+  }
+
+  .tile,
+  .tile::before{
+    border-radius: 24px;
+  }
+
+  .tile{
+    min-height: 228px;
+  }
+
+  .tile-head{
+    top: 13px;
+    left: 13px;
+    right: 13px;
+  }
+
+  .tile-foot{
+    left: 13px;
+    right: 13px;
+    bottom: 14px;
+    height: 50px;
+  }
+
+  .material-name{
+    max-width: calc(100% - 112px);
+    font-size: 17px;
+    line-height: 1.05;
+  }
+
+  .badge{
+    top: -1px;
+    gap: 7px;
+    padding: 4px 7px;
+    font-size: 10px;
+  }
+
+  .badge .dot{
+    width: 8px;
+    height: 8px;
+  }
+
+  .silhouette-wrap,
+  .add-tile .add-silhouette-wrap{
+    transform: translate(0);
+    width: 62%;
+    height: 62%;
+  }
+
+  .silhouette{
+    width: 86%;
+    max-width: 300px;
+    filter:
+      drop-shadow(0 14px 28px rgba(16,10,20,0.18))
+      drop-shadow(0 3px 6px rgba(16,10,20,0.10));
+  }
+
+  .module-id{
+    left: 2px;
+    bottom: 18px;
+    font-size: 10px;
+  }
+
+  .palette8{
+    width: 84%;
+    height: 13px;
+    padding: 3px;
+  }
+
+  .progress{
+    right: 2px;
+    bottom: 11px;
+    width: 68px;
+    height: 42px;
+  }
+
+  .progress-ring{
+    width: 28px;
+    height: 28px;
+  }
+
+  .progress-val{
+    bottom: 3px;
+    font-size: 18px;
+  }
+
+  .progress-val span{
+    font-size: 12px;
+    margin-left: 1px;
+  }
+
+  .add-plus{
+    right: 2px;
+    bottom: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 420px){
+  .grid{
+    gap: 10px;
+  }
+
+  .tile,
+  .tile::before{
+    border-radius: 22px;
+  }
+
+  .tile{
+    min-height: 214px;
+  }
+
+  .material-name{
+    max-width: calc(100% - 104px);
+    font-size: 16px;
+  }
+
+  .badge{
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+
+  .silhouette-wrap,
+  .add-tile .add-silhouette-wrap{
+    width: 64%;
+    height: 64%;
+  }
+
+  .silhouette{
+    width: 88%;
+    max-width: 270px;
+  }
+
+  .tile-foot{
+    bottom: 12px;
+    height: 46px;
+  }
+
+  .module-id{
+    bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .palette8{
+    width: 82%;
+    height: 12px;
+    gap: 2px;
+  }
+
+  .progress{
+    width: 62px;
+    height: 38px;
+  }
+
+  .progress-ring{
+    width: 25px;
+    height: 25px;
+  }
+
+  .progress-val{
+    font-size: 16px;
+  }
+
+  .progress-val span{
+    font-size: 11px;
+  }
+}
+
+/* ---------- Responsive magazzino: final overrides ---------- */
+
+.tile-link,
+.add-tile-link{
+  display:block;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.grid{
+  align-content:start;
+}
+
+@media (max-width: 1200px){
+  .grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: minmax(220px, 1fr);
+  }
+}
+
+@media (max-width: 900px){
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(224px, 240px);
+  }
+
+  .material-name{
+    max-width: calc(100% - 136px);
+  }
+
+  .badge{
+    max-width: max-content;
+  }
+}
+
+@media (max-width: 640px){
+  .grid{
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(220px, auto);
+  }
+
+  .tile-link,
+  .add-tile-link{
+    min-height: inherit;
+  }
+
+  .material-name{
+    max-width: calc(100% - 114px);
+  }
+}
+
+@media (max-width: 420px){
+  .material-name{
+    max-width: calc(100% - 106px);
+  }
+
+  .badge{
+    gap: 5px;
+  }
+}
+
+/* Responsive refinements — Acquisti */
+.purchases-b .panel,
+.purchases-b .panel-top,
+.purchases-b .hero-card,
+.purchases-b .rowcard,
+.purchases-b .drawer-top,
+.purchases-b .bitem,
+.purchases-b .link,
+.purchases-b .formula{
+  min-width: 0;
+}
+
+.row-left > div,
+.bitem > div,
+.link > div,
+.drawer-top > div:first-child{
+  min-width: 0;
+}
+
+#stockList .tr > div:nth-child(1){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1180px){
+  .purchases-b{
+    grid-template-columns: minmax(2, 2fr) 340px;
+  }
+
+  .hero-card{
+    grid-template-columns: minmax(2, 2fr) 140px;
+    gap: 12px;
+  }
+
+  .sample img{
+    width: 132px;
+  }
+}
+
 @media (max-width: 980px){
-  .purchases-b{ grid-template-columns: 1fr; }
-  .purchases-b .right{ position: static; }
-  .hero-grid{ grid-template-columns: 1fr; }
+  .purchases-b{
+    grid-template-columns: 2fr;
+  }
+
+  .purchases-b .right{
+    position: static;
+    top: auto;
+  }
+
+  .hero-grid{
+    grid-template-columns: 2fr;
+  }
+}
+
+@media (max-width: 760px){
+  .panel{
+    padding: 12px;
+  }
+
+  .panel-top{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .panel-actions,
+  .drawer-actions,
+  .form-actions{
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .panel-actions .btn,
+  .drawer-actions .btn,
+  .form-actions .btn{
+    flex: 1 1 160px;
+  }
+
+  .seg{
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 18px;
+  }
+
+  .seg-btn{
+    flex: 1 1 calc(33.333% - 6px);
+    text-align: center;
+    padding: 10px 10px;
+  }
+
+  .hero-card{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .sample{
+    justify-content: flex-start;
+  }
+
+  .sample img{
+    width: 116px;
+  }
+
+  .rowcard,
+  .bitem,
+  .link,
+  .drawer-top,
+  .formula{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rowcard > div:last-child,
+  .bitem > .btn,
+  .link > .btn{
+    width: 100%;
+  }
+
+  .rowcard > div:last-child{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .rowcard > div:last-child .btn{
+    flex: 1 1 140px;
+  }
+
+  .table-head,
+  #stockList .tr{
+    grid-template-columns: minmax(2, 2fr) 72px 72px 54px;
+    gap: 8px;
+  }
+
+  .table-head,
+  #stockList .tr,
+  .drawer-sub,
+  .formula-v,
+  .json,
+  .note,
+  .bitem .meta,
+  .colorname,
+  .field label{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px){
+  .purchases-b{
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .purchases-b .left,
+  .stack{
+    gap: 12px;
+  }
+
+  .panel{
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  h2,
+  .drawer-title{
+    font-size: 12px;
+  }
+
+  .hero-grid,
+  .rows,
+  .basket,
+  .links,
+  .reasons{
+    gap: 8px;
+  }
+
+  .hero-card,
+  .rowcard,
+  .bitem,
+  .link,
+  .drawer,
+  #stockList .tr{
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .row-left{
+    align-items: flex-start;
+  }
+
+  .row-left img{
+    width: 46px;
+  }
+
+  .sample img{
+    width: 96px;
+  }
+
+  .colorline{
+    display: inline-flex;
+    margin-left: 8px;
+    gap: 6px;
+    vertical-align: middle;
+  }
+
+  .swatch{
+    width: 10px;
+    height: 10px;
+  }
+
+  .table-head,
+  #stockList .tr{
+    grid-template-columns: minmax(2, 2fr) 58px 58px 42px;
+    gap: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #stockList .state-dot{
+    width: 10px;
+    height: 10px;
+  }
+
+  .field input{
+    padding: 11px 12px;
+  }
+}
+
+@media (max-width: 380px){
+  .seg-btn{
+    flex-basis: 100%;
+  }
+
+  .rowcard > div:last-child .btn,
+  .panel-actions .btn,
+  .drawer-actions .btn,
+  .form-actions .btn{
+    flex-basis: 100%;
+  }
+
+  .table-head,
+  #stockList .tr{
+    grid-template-columns: minmax(2, 2fr) 50px 50px 36px;
+  }
+
+  .colorline{
+    display: flex;
+    margin-left: 0;
+    margin-top: 6px;
+  }
 }

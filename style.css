@@ -773,7 +773,7 @@
   }
 
   .home-right{
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 
   .sys{
@@ -782,21 +782,26 @@
     border-radius: 24px;
   }
 
+  .sys-badge {
+    width: 40px;
+    height: 40px;
+  }
   .sys-left{
     align-items: flex-start;
     gap: 12px;
   }
 
   .sys-title{
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .sys-sub{
-    font-size: 11px;
+    font-size: 10px;
     line-height: 1.45;
   }
 
   .sys-kpis{
+    width: 55%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
@@ -824,12 +829,6 @@
     align-items: flex-start;
     gap: 8px;
     flex-direction: column;
-  }
-
-  .ready-grid,
-  .manage-grid{
-    grid-template-columns: 1fr;
-    gap: 12px;
   }
 
   .ready-card{
@@ -987,12 +986,7 @@
 
 @media (max-width: 520px){
   .sys-left{
-    flex-direction: column;
     align-items: flex-start;
-  }
-
-  .sys-kpis{
-    grid-template-columns: 1fr;
   }
 
   .sys-kpi{
