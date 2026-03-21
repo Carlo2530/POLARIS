@@ -511,13 +511,9 @@ body {
    ========================= */
 @media (max-width: 1100px){
   .header.header-nav .header-inner{
+    width: 100vw;
     height: auto;
     min-height: 68px;
-    padding: 14px 22px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    row-gap: 12px;
   }
 
   .header.header-nav .brand,
@@ -529,10 +525,8 @@ body {
   }
 
   .header.header-nav .nav{
-    order: 3;
     width: 50%;
     justify-content: center;
-    flex-wrap: wrap;
   }
 
   .header.header-nav .nav-Kpi{
@@ -553,18 +547,19 @@ body {
   }
 
   .header.header-nav .header-inner{
+    width: 100vw;
     padding: 12px 14px 14px;
     gap: 10px;
     row-gap: 10px;
   }
 
   .brand-link{
-    gap: 8px;
+    gap: 6px;
   }
 
   .brand-mark{
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
   }
 
   .header.header-nav .logo{

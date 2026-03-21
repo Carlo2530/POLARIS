@@ -745,9 +745,7 @@
   }
 
   .sys-kpis{
-    width: 100%;
     justify-content: space-between;
-    flex-wrap: wrap;
   }
 
   .sys-kpi{
@@ -841,7 +839,6 @@
   }
 
   .ready-top{
-    padding: 2px 2px 0;
     gap: 10px;
   }
 
@@ -916,13 +913,11 @@
   }
 
   .manage-top{
-    align-items: flex-start;
     gap: 10px;
-    flex-direction: column;
   }
 
   .manage-title{
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .manage-bar{
@@ -1013,10 +1008,11 @@
   .manage-card .palette8.palette-bottom{
     left: 0;
     right: 56px;
-    bottom: -22px;
   }
 
   .manage-card{
+    min-height: 19px;
+    height: 20px;
     padding-bottom: 74px;
   }
 
