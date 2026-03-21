@@ -638,7 +638,13 @@
 }
 
 .preview-tile.is-paired{
-  color: rgba(21,19,26,0.22);
+  color: var(--lo);
+}
+
+.preview-tile.is-paired .silhouette{
+  filter:
+    drop-shadow(0 14px 28px rgba(42,157,143,0.18))
+    drop-shadow(0 4px 10px rgba(42,157,143,0.10));
 }
 
 .silhouette path,

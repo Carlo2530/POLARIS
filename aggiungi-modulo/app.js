@@ -93,6 +93,7 @@ function setUnpairedState() {
   els.autoProfile.textContent = "Adattivo";
 
   els.previewTile.className = "tile preview-tile";
+  els.previewTile.classList.remove("is-paired");
   els.previewBadge.className = "badge dry";
   els.previewBadgeText.textContent = "NON ASSOCIATO";
   els.previewStatusText.textContent = "In attesa di associazione";
@@ -120,6 +121,7 @@ function setPairedState() {
   els.autoProfile.textContent = profile.profile;
 
   els.previewTile.className = "tile preview-tile";
+  els.previewTile.classList.add("is-paired");
   els.previewBadge.className = "badge done";
   els.previewBadgeText.textContent = "ASSOCIATO";
   els.previewStatusText.textContent = "Modulo pronto per il sistema";

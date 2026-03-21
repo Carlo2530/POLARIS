@@ -363,7 +363,7 @@
 
   .grid{
     grid-template-columns: minmax(2, 3fr);
-    grid-auto-rows: minmax(220px, auto);
+    grid-auto-rows: minmax(150px, auto);
     gap: 12px;
   }
 
@@ -476,7 +476,7 @@
   }
 
   .tile{
-    min-height: 214px;
+    min-height: 140px;
   }
 
   .material-name{
