@@ -1,6 +1,5 @@
 /* HOME — POLARIS system overview (page-specific) */
 .home-layout{
-  margin-top:14px;
   display:grid;
   grid-template-columns: 1fr 360px;
   gap:14px;

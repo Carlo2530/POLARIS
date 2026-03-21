@@ -13,7 +13,7 @@ const modules = [
   { id: "D-01", material: "PLA",  status: "done", fill: 11, colors: ["#111","#e53935","#43a047","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
   { id: "D-02", material: "PETG", status: "dry", fill: 45,  colors: ["#d32f2f","#c2185b","#7b1fa2","#1976d2","#388e3c","#fbc02d","#f57c00","#455a64"] },
   { id: "D-03", material: "ASA",  status: "done", fill: 10, colors: ["#fff","#9e9e9e","#616161","#212121","#ff7043","#26a69a","#ab47bc","#5c6bc0"] },
-  { id: "D-04", material: "PA",   status: "done", fill: 15,  colors: ["#000","#263238","#455a64","#607d8b","#9e9e9e","#bdbdbd","#424242","#212121"] },
+  { id: "D-04", material: "PLA",   status: "done", fill: 15,  colors: ["#111","#e53935","#43a047","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
 
   { id: "D-05", material: "ABS",  status: "dry", fill: 45,  colors: ["#424242","#ef5350","#66bb6a","#42a5f5","#ffee58","#7e57c2","#ffa726","#26c6da"] },
   { id: "D-06", material: "TPU",  status: "done", fill: 11, colors: ["#000","#90a4ae","#ff7043","#8d6e63","#26a69a","#ec407a","#ffee58","#5c6bc0"] },

@@ -17,7 +17,7 @@
 
 .page{
   flex: 1;           /* prende tutto lo spazio rimanente */
-  padding: 14px 0px;
+  padding: 0px 0px;
 }
 
 .grid{
@@ -267,7 +267,7 @@
 
 @media (max-width: 900px){
   .page{
-    padding: 12px 0;
+    padding: 0px 0px;
   }
 
   .grid{
@@ -358,7 +358,7 @@
 
 @media (max-width: 640px){
   .page{
-    padding: 10px 0;
+    padding: 0px 0px;
   }
 
   .grid{

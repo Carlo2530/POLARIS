@@ -7,7 +7,6 @@
   display:grid;
   grid-template-columns: 1fr 380px;
   gap:14px;
-  margin-top:14px;
 }
 
 .purchases-b .left{
