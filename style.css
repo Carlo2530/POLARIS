@@ -140,7 +140,7 @@
   border:1px solid rgba(20,16,20,0.10);
   background: rgba(255,255,255,0.62);
   box-shadow: 0 16px 44px rgba(16,10,20,0.06), inset 0 1px 0 rgba(255,255,255,0.60);
-  min-width: 92px;
+  min-width: 74px;
 }
 
 .sys-kpi-top{
@@ -988,7 +988,22 @@
 
   .sys-kpi{
     width: 100%;
+    padding: 6px 6px 6px 8px;
   }
+
+  .sys-kpi-ico {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sys-kpi-ico svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sys-kpi-num {
+     font-size: 12px;
+    }
 
   .ready-card{
     min-height: 176px;
