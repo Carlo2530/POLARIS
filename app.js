@@ -37,18 +37,18 @@ const modules = [
 ];
 
 const inventory = [
-  { mat:"PLA", grams:500, max:1000 },
-  { mat:"ABS", grams:150, max:1000 },
-  { mat:"PETG", grams:320, max:1000 },
-  { mat:"ASA", grams:460, max:1000 },
-  { mat:"TPU", grams:280, max:1000 },
-  { mat:"PA-CF", grams:80, max:1000 },
+  { mat:"PLA", grams:8, max:12 },
+  { mat:"ABS", grams:10, max:30 },
+  { mat:"PETG", grams:2, max:15 },
+  { mat:"ASA", grams:9, max:10 },
+  { mat:"TPU", grams:10, max:10 },
+  { mat:"PA-CF", grams:3, max:3 },
 ];
 
 const nextDays = [
   { when:"Domani", mat:"ABS", hours:"10h", p:55 },
-  { when:"Tra 2 giorni", mat:"PETG", hours:"—", p:78 },
-  { when:"Tra 3 giorni", mat:"PLA da 11-essiccare", hours:"", p:25 },
+  { when:"Tra 2 giorni", mat:"PETG", hours:"", p:78 },
+  { when:"Tra 3 giorni", mat:"PLA da essiccare", hours:"", p:5 },
 ];
 
 // ---------------- SVG inline  ----------------
@@ -192,7 +192,7 @@ function renderInventory(){
     return `
       <div class="inv-row">
         <div class="inv-name">${r.mat}</div>
-        <div class="inv-g">${r.grams}g</div>
+        <div class="inv-g">${r.grams}/${r.max}</div>
         <div class="inv-bar"><div style="width:${p}%;"></div></div>
       </div>
     `;
@@ -206,8 +206,8 @@ function renderNext(){
       <div class="next-item">
         <div class="next-top">
           <div>
+            <div class="inv-name" style="margin-top:0px;">${x.mat}</div>
             <div class="next-title">${x.when}</div>
-            <div class="muted" style="margin-top:6px; font-weight:900;">${x.mat}</div>
           </div>
           <div class="next-meta">
             <span class="dot ok"></span>

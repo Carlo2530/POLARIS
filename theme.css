@@ -4,7 +4,7 @@
   --panel: rgba(255,255,255,0.78);
   --panelSolid:#ffffff;
   --card: rgba(255,255,255,0.90);
-  --text:#0f172a;
+  --text:#37393c;
   --muted:#5b6476;
   --line:#e5e7ef;
 
@@ -14,7 +14,7 @@
   --lo:#2a9d8f;
   --info:#3a86ff;
 
-  --r:16px;
+  --r:16px;color: rgb(91 95 103)
 }
 
 *{ box-sizing:border-box; }
