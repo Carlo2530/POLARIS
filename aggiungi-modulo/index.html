@@ -22,7 +22,7 @@
       <nav class="nav">
         <a class="nav-link" href="../index.html">Home</a>
         <a class="nav-link" href="../magazzino/index.html">Magazzino</a>
-        <a class="nav-link is-active" href="./index.html">Aggiungi modulo</a>
+        <a class="nav-link is-active" href="index.html">modulo</a>
       </nav>
     </div>
   </header>
@@ -92,32 +92,6 @@
 </div>
 
           <form id="moduleForm" class="module-form" novalidate>
-            <div class="form-grid">
-              <label class="field">
-                <span class="field-label">Nome modulo</span>
-                <input
-                  id="moduleName"
-                  class="input"
-                  type="text"
-                  value="Modulo essiccazione 01"
-                  maxlength="32"
-                  placeholder="Es. Modulo essiccazione 01"
-                />
-              </label>
-
-              <label class="field">
-                <span class="field-label">Zona magazzino</span>
-                <input
-                  id="moduleZone"
-                  class="input"
-                  type="text"
-                  value="Cluster A · Scaffale 02"
-                  maxlength="32"
-                  placeholder="Es. Cluster A · Scaffale 02"
-                />
-              </label>
-            </div>
-
             <div class="field field-full">
               <span class="field-label">Dati configurati automaticamente</span>
 
@@ -154,16 +128,6 @@
               </div>
             </div>
 
-            <div class="field field-full">
-              <span class="field-label">Nota</span>
-              <textarea
-                id="moduleNote"
-                class="textarea"
-                rows="4"
-                placeholder="Aggiungi una nota opzionale sul posizionamento o sull'uso del modulo..."
-              >Modulo destinato al nuovo cluster di magazzino.</textarea>
-            </div>
-
             <div class="form-actions">
               <button type="reset" class="btn ghost">Reset</button>
               <button type="button" class="btn primary" id="saveBtn">Salva modulo</button>
@@ -183,7 +147,7 @@
 
           <div class="tile status-dry preview-tile" id="previewTile">
             <div class="tile-head">
-              <div class="material-name" id="previewName">Modulo essiccazione 01</div>
+              <div class="material-name" id="previewName">PETG</div>
 
               <div class="badge dry" id="previewBadge">
                 <span class="dot"></span>
@@ -194,10 +158,6 @@
             <div class="tile-body">
               <div class="silhouette-wrap" id="previewSilhouette">
                 <!-- SVG inline caricato da assets/sagoma-progetto.svg -->
-              </div>
-
-              <div class="preview-center-info">
-                <div class="pair-state" id="pairState">Pronto per pairing NFC</div>
               </div>
             </div>
 
@@ -236,13 +196,6 @@
             <div class="preview-meta-row">
               <span class="preview-meta-label">Gestione</span>
               <span class="preview-meta-value">Filamenti, palette e temperatura gestiti automaticamente</span>
-            </div>
-
-            <div class="preview-meta-row preview-meta-note">
-              <span class="preview-meta-label">Nota</span>
-              <p class="preview-note" id="previewNote">
-                Modulo destinato al nuovo cluster di magazzino.
-              </p>
             </div>
           </div>
         </aside>

@@ -1,10 +1,6 @@
 const SVG_PATH = "../magazzino/assets/sagoma-progetto.svg";
 
 const els = {
-  moduleName: document.getElementById("moduleName"),
-  moduleZone: document.getElementById("moduleZone"),
-  moduleNote: document.getElementById("moduleNote"),
-
   pairBtn: document.getElementById("pairBtn"),
   saveBtn: document.getElementById("saveBtn"),
 
@@ -28,10 +24,8 @@ const els = {
   previewId: document.getElementById("previewId"),
   previewZone: document.getElementById("previewZone"),
   previewConnection: document.getElementById("previewConnection"),
-  previewNote: document.getElementById("previewNote"),
   previewPalette: document.getElementById("previewPalette"),
   previewPercent: document.getElementById("previewPercent"),
-  pairState: document.getElementById("pairState"),
   previewSilhouette: document.getElementById("previewSilhouette")
 };
 
@@ -74,9 +68,6 @@ function paletteMarkup(colors) {
 }
 
 function updatePreviewText() {
-  els.previewName.textContent = sanitizeText(els.moduleName.value, "Nuovo modulo");
-  els.previewZone.textContent = sanitizeText(els.moduleZone.value, "Zona non definita");
-  els.previewNote.textContent = sanitizeText(els.moduleNote.value, "Nessuna nota inserita.");
 }
 
 function setUnpairedState() {
@@ -93,6 +84,7 @@ function setUnpairedState() {
   els.autoProfile.textContent = "Adattivo";
 
   els.previewTile.className = "tile preview-tile";
+  els.previewName.textContent = "Materiale";
   els.previewTile.classList.remove("is-paired");
   els.previewBadge.className = "badge dry";
   els.previewBadgeText.textContent = "NON ASSOCIATO";
@@ -101,7 +93,6 @@ function setUnpairedState() {
   els.previewConnection.textContent = "In attesa";
   els.previewPalette.innerHTML = emptyPaletteMarkup();
   els.previewPercent.textContent = "--";
-  els.pairState.textContent = "Pronto per pairing NFC";
   els.pairBtn.textContent = "Connetti modulo";
 }
 
@@ -121,6 +112,7 @@ function setPairedState() {
   els.autoProfile.textContent = profile.profile;
 
   els.previewTile.className = "tile preview-tile";
+  els.previewName.textContent = "PETG";
   els.previewTile.classList.add("is-paired");
   els.previewBadge.className = "badge done";
   els.previewBadgeText.textContent = "ASSOCIATO";
@@ -128,8 +120,7 @@ function setPairedState() {
   els.previewId.textContent = profile.id;
   els.previewConnection.textContent = "Associato via NFC";
   els.previewPalette.innerHTML = paletteMarkup(profile.palette);
-  els.previewPercent.textContent = "Auto";
-  els.pairState.textContent = "Modulo pronto per riconoscimento filamenti";
+  els.previewPercent.textContent = "35%";
   els.pairBtn.textContent = "Ricollega modulo";
 }
 
@@ -225,25 +216,9 @@ async function initPreviewSVG() {
   }
 }
 
-els.moduleName.addEventListener("input", updatePreviewText);
-els.moduleZone.addEventListener("input", updatePreviewText);
-els.moduleNote.addEventListener("input", updatePreviewText);
-
 els.pairBtn.addEventListener("click", togglePairing);
 
 document.getElementById("moduleForm").addEventListener("reset", handleReset);
-
-els.saveBtn.addEventListener("click", () => {
-  const payload = {
-    name: sanitizeText(els.moduleName.value, "Nuovo modulo"),
-    zone: sanitizeText(els.moduleZone.value, "Zona non definita"),
-    note: sanitizeText(els.moduleNote.value, ""),
-    paired
-  };
-
-  console.log("POLARIS new module:", payload);
-  fakeSaveFeedback();
-});
 
 updatePreviewText();
 setUnpairedState();
