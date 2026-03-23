@@ -24,7 +24,7 @@
   height: 100%;      /* ora 100% ha senso */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, minmax(220px, 1fr));
+  grid-template-rows: repeat(4, minmax(220px, 1fr));
   gap: 14px;
 }
 

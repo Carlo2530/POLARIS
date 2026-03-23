@@ -1,10 +1,7 @@
 // POLARIS — Overview tecnica moduli 3×4
-// - Ogni tile: indicatore 8 parti + nome materiale + sagoma centrale
-// - Sagoma: caricata da file SVG e inserita INLINE per colorazione via CSS
-// File sagoma: assets/sagoma progetto.svg
 
 const GRID_ID = "grid";
-const SVG_PATH = "assets/sagoma-progetto.svg"; // <-- IL TUO FILE
+const SVG_PATH = "assets/sagoma-progetto.svg";
 
 const grid = document.getElementById(GRID_ID);
 
@@ -24,6 +21,11 @@ const modules = [
   { id: "D-10", material: "ASA",  status: "done", fill: 19, colors: ["#ffffff","#111111","#ff7043","#26a69a","#7e57c2","#42a5f5","#ffee58","#8d6e63"] },
   { id: "D-11", material: "PA-CF",status: "err", fill: 23,  colors: ["#000","#111","#222","#333","#444","#555","#666","#777"] },
   { id: "D-12", material: "ABS",  status: "done", fill: 16, colors: ["#111","#f4511e","#7cb342","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
+  
+  { id: "D-13", material: "PETG", status: "dry", fill: 27,  colors: ["#e0e0e0","#757575","#ffca28","#66bb6a","#42a5f5","#ab47bc","#ef5350","#26c6da"] },
+  { id: "D-14", material: "ASA",  status: "done", fill: 19, colors: ["#ffffff","#111111","#ff7043","#26a69a","#7e57c2","#42a5f5","#ffee58","#8d6e63"] },
+  { id: "D-15", material: "PC",   status: "dry", fill: 35,  colors: ["#eceff1","#546e7a","#ff8a65","#4db6ac","#ba68c8","#7986cb","#dce775","#ffd54f"] },
+  { id: "D-16", material: "ABS",  status: "done", fill: 16, colors: ["#111","#f4511e","#7cb342","#1e88e5","#fdd835","#8e24aa","#fb8c00","#00acc1"] },
 ];
 
 function updateKpis(mods){
