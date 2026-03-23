@@ -868,3 +868,9 @@
     max-width:none;
   }
 }
+
+@media (max-width: 720px){
+  .preview-tile {
+    min-height: 295px;
+  }
+}
