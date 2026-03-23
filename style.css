@@ -9,6 +9,13 @@
 .home-left{ display:flex; flex-direction:column; gap:14px; }
 .home-right{ display:flex; flex-direction:column; gap:14px; }
 
+.nav-Kpi{
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  padding-right: 13px;
+}
+
 /* ---- System card ---- */
 .sys{
   position: relative;
