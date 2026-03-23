@@ -157,7 +157,7 @@ const alerts = document.getElementById("alerts");
 const eventLog = document.getElementById("eventLog");
 
 const checklist = document.getElementById("checklist");
-const cleanMeta = document.getElementById("cleanMeta");
+// const cleanMeta = document.getElementById("cleanMeta");
 
 // Buttons
 document.getElementById("pauseBtn").addEventListener("click", () => logEvent("ACTION", "Pausa ciclo richiesta (simulazione)"));
@@ -285,9 +285,9 @@ function alertCard(title, desc, tone){
 
 function renderChecklist(){
   const days = daysSinceISO(data.cleaning.lastCleanedISO);
-  cleanMeta.textContent = `Ultima pulizia: ${days} giorni fa`;
+  //cleanMeta.textContent = `Ultima pulizia: ${days} giorni fa`;
 
-  const saved = loadChecklistState(data.id);
+  /* const saved = loadChecklistState(data.id);
   checklist.innerHTML = data.cleaning.tasks.map(t => {
     const checked = saved[t.id] === true;
     return `
@@ -299,7 +299,7 @@ function renderChecklist(){
         </div>
       </label>
     `;
-  }).join("");
+  }).join(""); */
 
   checklist.querySelectorAll("input[type=checkbox]").forEach(cb => {
     cb.addEventListener("change", () => {

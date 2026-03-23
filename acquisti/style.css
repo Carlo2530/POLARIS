@@ -110,7 +110,7 @@ h2{
   box-shadow: 0 28px 76px rgba(16,10,20,0.12), inset 0 1px 0 rgba(255,255,255,0.60);
 }
 
-.sample{ justify-content:right; align-items:center; }
+.sample{align-items:center; text-align: right;}
 .sample img{
   width:160px;
   height:auto;
@@ -824,12 +824,14 @@ h2{
     width: 100%;
     flex-wrap: wrap;
     border-radius: 18px;
+    min-height: 40px;
   }
 
   .seg-btn{
     flex: 1 1 calc(33.333% - 6px);
     text-align: center;
-    padding: 10px 10px;
+    padding: 5px 5px;
+    max-height: 30px;
   }
 
   .hero-card{
@@ -925,6 +927,11 @@ h2{
   #stockList .tr{
     padding: 10px;
     border-radius: 16px;
+  }
+
+  .sample {
+    text-align: center;
+    transform: translate(-10%);
   }
 
   .row-left{

@@ -261,16 +261,27 @@
   display:flex;
   align-items:center;
   justify-content:center;
+  color: rgba(21,19,26,0.22);
+  transition: color .22s ease, filter .22s ease;
+}
+
+.nfc-card.is-paired .nfc-module-shape{
   color: var(--lo);
 }
 
 .nfc-module-shape .silhouette{
-  width:86%;
-  max-width:none;
-  max-height:100%;
+  width:100%;
+  max-width:200px;
   height:auto;
   filter:
-    drop-shadow(0 10px 22px rgba(42,157,143,0.18))
+    drop-shadow(0 12px 24px rgba(16,10,20,0.10))
+    drop-shadow(0 4px 8px rgba(16,10,20,0.06));
+  transition: filter .22s ease;
+}
+
+.nfc-card.is-paired .nfc-module-shape .silhouette{
+  filter:
+    drop-shadow(0 12px 24px rgba(42,157,143,0.18))
     drop-shadow(0 4px 10px rgba(42,157,143,0.10));
 }
 
@@ -874,3 +885,4 @@
     min-height: 295px;
   }
 }
+

@@ -72,7 +72,8 @@ function updatePreviewText() {
 
 function setUnpairedState() {
   paired = false;
-
+  els.nfcCard.classList.remove("is-paired");
+  
   els.nfcTitle.textContent = "Avvicina il telefono al modulo";
   els.nfcText.textContent = "Rileva e associa automaticamente l’hardware del nuovo modulo POLARIS.";
 
@@ -98,7 +99,8 @@ function setUnpairedState() {
 
 function setPairedState() {
   paired = true;
-
+  els.nfcCard.classList.add("is-paired");
+  
   const profile = automaticProfiles[Math.floor(Math.random() * automaticProfiles.length)];
 
   els.nfcTitle.textContent = "Modulo rilevato correttamente";

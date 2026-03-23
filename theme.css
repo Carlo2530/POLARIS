@@ -181,7 +181,6 @@ body {
 
 .kpis{
   display:flex;
-  gap:10px;
   justify-content:flex-end;
   flex-wrap:nowrap;
   gap:10px;
@@ -525,7 +524,6 @@ body {
   }
 
   .header.header-nav .nav{
-    width: 50%;
     justify-content: center;
   }
 
