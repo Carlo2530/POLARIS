@@ -765,6 +765,10 @@
 }
 
 @media (max-width: 720px){
+  .header.header-nav .nav-Kpi {
+    width: unset;
+  }
+
   .home-layout{
     margin-top: 10px;
     gap: 12px;
