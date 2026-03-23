@@ -57,13 +57,10 @@ async function loadInlineSVG(url){
   if(!res.ok) throw new Error(`Impossibile caricare SVG: ${url} (${res.status})`);
   let svgText = await res.text();
 
-  // 1) rimuovi width/height esportati (pt) 
   svgText = svgText
     .replace(/\swidth="[^"]*"/i, "")
     .replace(/\sheight="[^"]*"/i, "");
 
-  // 2) forza fill = currentColor, elimina stroke
-  // (utile se Rhino esporta nero fisso o stroke)
   svgText = svgText
     .replace(/fill="none"/gi, 'fill="currentColor"')
     .replace(/fill="#[0-9a-fA-F]{3,6}"/g, 'fill="currentColor"')
@@ -71,7 +68,6 @@ async function loadInlineSVG(url){
     .replace(/stroke="[^"]*"/g, 'stroke="none"')
     .replace(/stroke-width="[^"]*"/g, "");
 
-  // 
   svgText = svgText.replace(
     /<svg\b([^>]*)>/i,
     (m, attrs) => {

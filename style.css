@@ -281,8 +281,8 @@
   position:absolute;
   inset:0;
   background: radial-gradient(420px 220px at 50% 55%,
-    rgba(255,255,255,0.72),
-    rgba(255,255,255,0.12) 60%,
+    rgba(255,255,255,0.62),
+    rgba(255,255,255,0.12) 50%,
     rgba(255,255,255,0.06) 100%);
   z-index: 1;
   pointer-events:none;
@@ -846,6 +846,13 @@
     border-radius: 24px;
     padding: 14px;
     padding-bottom: 16px;
+  }
+
+  .ready-card::after{
+    background: radial-gradient(120px 120px at 50% 55%,
+     rgba(255,255,255,0.62),
+     rgba(255,255,255,0.12) 40%,
+     rgba(255,255,255,0.06) 100%);
   }
 
   .ready-top{
