@@ -198,6 +198,7 @@ canvas{ display:block; width:100%; height:auto; }
   font-weight: 1000;
   letter-spacing: -0.8px;
   line-height: 1;
+  transform: translateY(20px);
 }
 
 .ringPct span{ font-size: 0.55em; } /* se vuoi anche il % più piccolo */
@@ -353,4 +354,19 @@ canvas{ display:block; width:100%; height:auto; }
     padding: 0px;
     padding-top: 0px;
   }
+}
+
+@media (max-width: 520px){
+  .panelTop {
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 0px;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
 }
