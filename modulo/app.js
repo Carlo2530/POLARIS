@@ -156,15 +156,15 @@ const paletteLegend = document.getElementById("paletteLegend");
 const alerts = document.getElementById("alerts");
 const eventLog = document.getElementById("eventLog");
 
-const checklist = document.getElementById("checklist");
+// const checklist = document.getElementById("checklist");
 // const cleanMeta = document.getElementById("cleanMeta");
 
 // Buttons
-document.getElementById("pauseBtn").addEventListener("click", () => logEvent("ACTION", "Pausa ciclo richiesta (simulazione)"));
-document.getElementById("resumeBtn").addEventListener("click", () => logEvent("ACTION", "Ripresa ciclo richiesta (simulazione)"));
-document.getElementById("addErrorDemo").addEventListener("click", () => simulateWrongSpool());
-document.getElementById("resetChecklist").addEventListener("click", () => resetChecklist());
-document.getElementById("markCleaned").addEventListener("click", () => markCleanedNow());
+//document.getElementById("pauseBtn").addEventListener("click", () => logEvent("ACTION", "Pausa ciclo richiesta (simulazione)"));
+//document.getElementById("resumeBtn").addEventListener("click", () => logEvent("ACTION", "Ripresa ciclo richiesta (simulazione)"));
+//document.getElementById("addErrorDemo").addEventListener("click", () => simulateWrongSpool());
+//document.getElementById("resetChecklist").addEventListener("click", () => resetChecklist());
+//document.getElementById("markCleaned").addEventListener("click", () => markCleanedNow());
 
 // Chart
 const canvas = document.getElementById("humidityChart");
@@ -224,7 +224,7 @@ function renderAll(){
   renderAlerts();
 
   // Log initial
-  logEvent("INFO", `Pagina modulo aperta: ${data.id}`);
+  //logEvent("INFO", `Pagina modulo aperta: ${data.id}`);
 
   // Cleaning
   renderChecklist();
@@ -251,7 +251,7 @@ function renderAlerts(){
 ));
   }
 
-  // Cleaning due (semplice: > 7 giorni)
+  /* // Cleaning due (semplice: > 7 giorni)
   const daysSince = daysSinceISO(data.cleaning.lastCleanedISO);
   if (daysSince > 7){
     items.push(alertCard(
@@ -265,7 +265,7 @@ function renderAlerts(){
       `Ultima pulizia: ${daysSince} giorni fa`,
       "ok"
     ));
-  }
+  } */
 
   alerts.innerHTML = items.join("");
 }
@@ -301,7 +301,7 @@ function renderChecklist(){
     `;
   }).join(""); */
 
-  checklist.querySelectorAll("input[type=checkbox]").forEach(cb => {
+  /*  checklist.querySelectorAll("input[type=checkbox]").forEach(cb => {
     cb.addEventListener("change", () => {
       const id = cb.getAttribute("data-task");
       const state = loadChecklistState(data.id);
@@ -309,33 +309,33 @@ function renderChecklist(){
       saveChecklistState(data.id, state);
       logEvent("CHECK", `${cb.checked ? "Completato" : "Non completato"}: ${id}`);
     });
-  });
+  }); */
 }
 
-function resetChecklist(){
+/* function resetChecklist(){
   saveChecklistState(data.id, {});
   renderChecklist();
   logEvent("CHECK", "Checklist resettata");
-}
+} */
 
-function markCleanedNow(){
+/* function markCleanedNow(){
   // simulazione: aggiorna meta e reset checklist
   data.cleaning.lastCleanedISO = new Date().toISOString();
   resetChecklist();
   renderAlerts();
   renderChecklist();
   logEvent("MAINT", "Pulizia segnata come completata (ora)");
-}
+} */
 
-// Error simulation
-function simulateWrongSpool(){
+/* Error simulation
+ function simulateWrongSpool(){
   data.status = "err";
   data.spool.ok = false;
   data.spool.inserted = "PETG 1.75mm";
   kStatus.textContent = statusLabel(data.status);
   renderAlerts();
   logEvent("ERROR", "Rilevata bobina non compatibile (simulazione)");
-}
+} */
 
 // Logging
 function logEvent(type, msg){
@@ -462,16 +462,17 @@ function escapeHtml(s){
 }
 
 // Persist checklist per module
-function loadChecklistState(moduleId){
+/* function loadChecklistState(moduleId){
   try{
     return JSON.parse(localStorage.getItem(`POLARIS_check_${moduleId}`) || "{}");
   }catch{
     return {};
   }
-}
-function saveChecklistState(moduleId, obj){
+} */
+
+/* function saveChecklistState(moduleId, obj){
   localStorage.setItem(`POLARIS_check_${moduleId}`, JSON.stringify(obj));
-}
+} */
 
 // Generate a descending series (humid decreases) with small noise
 function genSeries(n, start, end){
